@@ -45,6 +45,19 @@ setopt prompt_subst
 setopt interactive_comments
 
 # ------------------------------------------------
+# oh-my-zsh
+
+export ZSH=$HOME/.oh-my-zsh
+export ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
+
+ZSH_THEME="blinks"
+COMPLETION_WAITING_DOTS="true"
+
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# ------------------------------------------------
 # Python
 
 export PYTHONSTARTUP=~/.python-startup.py
