@@ -50,10 +50,10 @@ setopt interactive_comments
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
-ZSH_THEME="blinks"
+ZSH_THEME="rkj-repos"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions git)
 
 source $ZSH/oh-my-zsh.sh
 
