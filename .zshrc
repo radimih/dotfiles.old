@@ -1,6 +1,19 @@
 #!/usr/bin/env zsh
 
 # ------------------------------------------------
+# oh-my-zsh
+
+export ZSH=$HOME/.oh-my-zsh
+export ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
+
+ZSH_THEME="rkj-repos"
+COMPLETION_WAITING_DOTS="true"
+
+plugins=(zsh-syntax-highlighting zsh-autosuggestions git vi-mode colored-man-pages fancy-ctrl-z docker docker-compose)
+
+source $ZSH/oh-my-zsh.sh
+
+# ------------------------------------------------
 # Алиасы
 
 alias ll='ls -AlF --group-directories-first'
@@ -28,11 +41,11 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 setopt append_history
-setopt inc_append_history
+setopt extended_history
+setopt inc_append_history_time
 setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
 setopt hist_ignore_space
-#??? setopt share_history
 
 # ------------------------------------------------
 # Прочие параметры оболочки
@@ -45,17 +58,24 @@ setopt prompt_subst
 setopt interactive_comments
 
 # ------------------------------------------------
-# oh-my-zsh
+# Текстовый редактор по-умолчанию
 
-export ZSH=$HOME/.oh-my-zsh
-export ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
+if [[ "`which vim | grep 'not found'`" == "" ]]
+then
+  export EDITOR=`which vim`
+else
+  export EDITOR=/usr/bin/vi
+fi
 
-ZSH_THEME="rkj-repos"
-COMPLETION_WAITING_DOTS="true"
+# ------------------------------------------------
+# Цветной вывод команды ls
 
-plugins=(zsh-syntax-highlighting zsh-autosuggestions git)
-
-source $ZSH/oh-my-zsh.sh
+if [[ "$TERM" != "dumb" ]]; then
+  if [[ -x $(which dircolors) ]]; then
+  eval $(dircolors -b)
+  alias 'ls=ls --color=auto'
+  fi
+fi
 
 # ------------------------------------------------
 # Python
