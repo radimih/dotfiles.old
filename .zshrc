@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+[ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
+
 # ------------------------------------------------
 # oh-my-zsh
 
@@ -22,6 +24,7 @@ alias df='df -h'
 alias du='du -h'
 alias e='$EDITOR'
 alias se='sudoedit'
+alias ping='ping -c4'
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # ------------------------------------------------
