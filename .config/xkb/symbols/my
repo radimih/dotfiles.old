@@ -1,0 +1,6 @@
+//xkb_symbols "default" {
+//    include "ru(common)"
+//    name[Group1]= "Russian";
+//    key <AE03> { [ 3,  numbersign  ] };
+//};
+

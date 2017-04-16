@@ -1,11 +1,21 @@
 #!/bin/sh
 #-------------------------------------------------------------------------------
-# Скрипт выполняется при старте X-сессии пользователя _ДО_ старта WM
+# Скрипт выполняется при старте X-сессии пользователя _ДО_ старта WM или DE
 #-------------------------------------------------------------------------------
 
-
 # Запустить немодальный переключатель раскладки клавиатуры
-# (https://github.com/grafov/shift-shift)
+# (https://github.com/grafov/shift-shift):
+#   - левый Shift  - первая раскладка (us)
+#   - правый Shift - вторая раскладка (ru)
 
 [ -x $HOME/bin/shift-shift ] && \
   ( pidof shift-shift > /dev/null || $HOME/bin/shift-shift -quiet > /dev/null & )
+
+# Запустить тонкую настройку клавиатуры
+
+if [ -f $HOME/bin/xkb-tuning.sh ]
+then
+  [ ! -x $HOME/bin/xkb-tuning.sh ] && chmod a+x $HOME/bin/xkb-tuning.sh
+  $HOME/bin/xkb-tuning.sh
+fi
+
