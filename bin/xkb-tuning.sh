@@ -13,13 +13,12 @@
 #-----------------------------------------------------------
 # Параметры xkb (см. /usr/share/X11/xkb/rules/base[.lst]
 
-XKB_OPTS='grp:alt_shift_toggle'        # циклическое переключение раскладок по Alt-Shift
-XKB_OPTS=${XKB_OPTS}',grp_led:caps'    # индикатор раскладки на лампочке CapsLock
-XKB_OPTS=${XKB_OPTS}',grp_led:scroll'  # индикатор раскладки на лампочке ScrollLock
-XKB_OPTS=${XKB_OPTS}',caps:swapescape' # поменять местами клавиши CapsLock и ESC
-#XKB_OPTS=${XKB_OPTS}',caps:escape'    # клавиша CapsLock как дополнительная клавиша ESC
-#XKB_OPTS=${XKB_OPTS}',shift:lshift_both_capslock' # клавиша CapsLock как дополнительная клавиша ESC
-XKB_OPTS=${XKB_OPTS}',compose:ralt'    # использовать в качестве клавиши Compose правый Alt
+XKB_OPTS='grp:alt_shift_toggle'            # циклическое переключение раскладок по Alt-Shift
+XKB_OPTS=${XKB_OPTS}',grp_led:caps'        # индикатор раскладки на лампочке CapsLock
+XKB_OPTS=${XKB_OPTS}',grp_led:scroll'      # индикатор раскладки на лампочке ScrollLock
+XKB_OPTS=${XKB_OPTS}',caps:escape'         # клавиша CapsLock как дополнительная клавиша ESC
+XKB_OPTS=${XKB_OPTS}',shift:both_capslock' # переключение CapsLock двумя клавишами Shift 
+XKB_OPTS=${XKB_OPTS}',compose:ralt'        # использовать в качестве клавиши Compose правый Alt
 
 #-----------------------------------------------------------
 # Предварительная подготовка для DE
@@ -61,5 +60,4 @@ fi
 
 setxkbmap -layout "us,ru(winkeys)" -option "" -option "$XKB_OPTS" -print \
   | xkbcomp -I"$HOME/.config/xkb" - "${DISPLAY%%.*}" >/dev/null 2>&1
-
 
