@@ -24,7 +24,7 @@ XKB_OPTS=${XKB_OPTS}',compose:ralt'        # использовать в кач�
 # Предварительная подготовка для DE
 
 # Если в системе присутствует GNOME-подобное DE
-if [ -x $(which gsettings) ]
+if which gsettings > /dev/null 2>&1
 then
 
   FILE_SCRIPT="$0"

@@ -63,7 +63,7 @@ setopt interactive_comments
 # ------------------------------------------------
 # Текстовый редактор по-умолчанию
 
-if [[ "`which vim | grep 'not found'`" == "" ]]
+if which vim > /dev/null 2>&1
 then
   export EDITOR=`which vim`
 else
