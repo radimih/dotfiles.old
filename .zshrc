@@ -11,7 +11,8 @@ export ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 ZSH_THEME="rkj-repos"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(zsh-syntax-highlighting zsh-autosuggestions git colored-man-pages fancy-ctrl-z docker docker-compose)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions history-substring-search \
+	 git colored-man-pages fancy-ctrl-z docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,6 +87,9 @@ fi
 
 bindkey -v
 KEYTIMEOUT=5
+
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 function zle-keymap-select {
   if [[ $KEYMAP == vicmd ]] || [[ $1 = 'block' ]]; then
