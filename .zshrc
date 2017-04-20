@@ -11,7 +11,7 @@ export ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 ZSH_THEME="rkj-repos"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(zsh-syntax-highlighting zsh-autosuggestions git vi-mode colored-man-pages fancy-ctrl-z docker docker-compose)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions git colored-man-pages fancy-ctrl-z docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -79,6 +79,24 @@ if [[ "$TERM" != "dumb" ]]; then
   alias 'ls=ls --color=auto'
   fi
 fi
+
+# ------------------------------------------------
+# vi-mode для командой строки + форма курсора
+# в зависимости от режима
+
+bindkey -v
+KEYTIMEOUT=5
+
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]] || [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ $KEYMAP == main ]] || [[ $KEYMAP == viins ]] \
+    || [[ $KEYMAP = '' ]] || [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() { zle-keymap-select 'beam'}
 
 # ------------------------------------------------
 # Python
