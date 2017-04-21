@@ -1,5 +1,5 @@
-set nocompatible
 set number
+set cursorline
 
 "-------------------------------------------------------------------------------
 " Автоматическая установка менеджера плагинов vim-plug
@@ -44,7 +44,7 @@ call plug#end()
 " Настройки плагинов
 "-------------------------------------------------------------------------------
 
-" -- xkb-switch
+" -- vim-xkbswitch
 let g:XkbSwitchEnabled = 1
 let g:XkbSwitchIMappings = ['ru']
 let g:XkbSwitchAssistNKeymap = 1    " for commands r and f
