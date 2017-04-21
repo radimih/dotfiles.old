@@ -1,5 +1,5 @@
 set nocompatible
-set termguicolors
+set number
 
 "-------------------------------------------------------------------------------
 " Автоматическая установка менеджера плагинов vim-plug
@@ -21,9 +21,24 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 Plug 'lyokha/vim-xkbswitch'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'lifepillar/vim-solarized8'
 Plug 'scrooloose/nerdtree'
     
 call plug#end()
+
+"-------------------------------------------------------------------------------
+" Цветовая схема
+"-------------------------------------------------------------------------------
+
+ colorscheme solarized8_dark
+"colorscheme solarized8_dark_low
+"colorscheme solarized8_dark_high
+"colorscheme solarized8_dark_flat
+
+"colorscheme solarized8_light
+"colorscheme solarized8_light_low
+"colorscheme solarized8_light_high
+"colorscheme solarized8_light_flat
 
 "-------------------------------------------------------------------------------
 " Настройки плагинов
@@ -41,3 +56,4 @@ set imsearch=0
 " -- vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='simple'
+
