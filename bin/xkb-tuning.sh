@@ -18,6 +18,7 @@ XKB_OPTS=${XKB_OPTS}',grp_led:caps'        # индикатор раскладк
 XKB_OPTS=${XKB_OPTS}',grp_led:scroll'      # индикатор раскладки на лампочке ScrollLock
 XKB_OPTS=${XKB_OPTS}',caps:escape'         # клавиша CapsLock как дополнительная клавиша ESC
 XKB_OPTS=${XKB_OPTS}',shift:both_capslock' # переключение CapsLock двумя клавишами Shift 
+XKB_OPTS=${XKB_OPTS}',ctrl:swap_lalt_lctl' # поменять местами левые Ctrl и Alt  
 XKB_OPTS=${XKB_OPTS}',compose:ralt'        # использовать в качестве клавиши Compose правый Alt
 
 #-----------------------------------------------------------
