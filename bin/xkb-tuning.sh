@@ -11,15 +11,27 @@
 #-------------------------------------------------------------------------------
 
 #-----------------------------------------------------------
-# Параметры xkb (см. /usr/share/X11/xkb/rules/base[.lst]
+# Параметры xkb (см. /usr/share/X11/xkb/rules/base[.lst])
 
-XKB_OPTS='grp:alt_shift_toggle'            # циклическое переключение раскладок по Alt-Shift
+XKB_OPTS='compose:ralt'                    # правый Alt в качестве клавиши Compose
 XKB_OPTS=${XKB_OPTS}',grp_led:caps'        # индикатор раскладки на лампочке CapsLock
 XKB_OPTS=${XKB_OPTS}',grp_led:scroll'      # индикатор раскладки на лампочке ScrollLock
 XKB_OPTS=${XKB_OPTS}',caps:escape'         # клавиша CapsLock как дополнительная клавиша ESC
 XKB_OPTS=${XKB_OPTS}',shift:both_capslock' # переключение CapsLock двумя клавишами Shift 
-XKB_OPTS=${XKB_OPTS}',ctrl:swap_lalt_lctl' # поменять местами левые Ctrl и Alt  
-XKB_OPTS=${XKB_OPTS}',compose:ralt'        # использовать в качестве клавиши Compose правый Alt
+
+# Сделать циклическое переключение раскладок по Alt-Shift.
+# Так как далее клавиши Ctrl и Alt меняются местами, то
+# указывается комбинация Ctrl-Shift
+
+XKB_OPTS='grp:ctrl_shift_toggle'
+
+# Поменять местами левые Ctrl и Alt, если скрипт запускается НЕ под виртуальной машиной.
+# Под виртуальной машиной лучше поменять эти клавиши средствами хостовой ОС.
+
+if ! systemd-detect-virt > /dev/null
+then
+  XKB_OPTS=${XKB_OPTS}',ctrl:swap_lalt_lctl'
+fi
 
 #-----------------------------------------------------------
 # Предварительная подготовка для DE
