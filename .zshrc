@@ -17,6 +17,16 @@ plugins=(zsh-syntax-highlighting zsh-autosuggestions history-substring-search \
 source $ZSH/oh-my-zsh.sh
 
 # ------------------------------------------------
+# Освободить для терминала комбинации клавиш
+# Ctrl+С/V, вместо Ctrl+C сделать Ctrl+Q.
+# Не забыть в настройках терминала назначить
+# на клавиши Ctrl+C/V вставку/копирование.
+
+stty lnext undef  # освободить Ctrl+V
+stty start undef  # освободить Ctrl+Q
+stty intr ^Q      # вместо Ctrl+C сделать Ctrl+Q
+
+# ------------------------------------------------
 # Алиасы
 
 alias ll='ls -AlF --group-directories-first'
