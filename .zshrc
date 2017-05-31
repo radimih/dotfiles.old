@@ -12,7 +12,7 @@ ZSH_THEME="rkj-repos"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(zsh-syntax-highlighting zsh-autosuggestions history-substring-search \
-	 git colored-man-pages fancy-ctrl-z docker docker-compose)
+	 deer git colored-man-pages fancy-ctrl-z docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,7 +118,12 @@ zle -N zle-keymap-select
 zle-line-init() { zle-keymap-select 'beam'}
 
 # ------------------------------------------------
+# Ctrl-D: ranger-подобная навигация по файлам
+# (https://github.com/Vifon/deer)
+
+bindkey '^d' deer
+
+# ------------------------------------------------
 # Python
 
 export PYTHONSTARTUP=~/.python-startup.py
-
