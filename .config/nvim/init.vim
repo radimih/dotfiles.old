@@ -4,23 +4,51 @@
 let vim_plug_file = expand('~/.config/nvim/autoload/plug.vim')
 
 if !filereadable(vim_plug_file)
-  silent execute '!curl -fL'
-                    \ ' -o ' . vim_plug_file .
-                    \ ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall
+    silent execute '!curl -fL'
+                 \ ' -o ' . vim_plug_file .
+                 \ ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall
 endif
 
 "-------------------------------------------------------------------------------
-" Список плагинов
+" Список плагинов (для установки/обновления плагинов команда :PlugInstall)
 "-------------------------------------------------------------------------------
 call plug#begin(expand('~/.config/nvim/plugged'))
-    
+
+" Разумные настройки от авторитета
+Plug 'tpope/vim-sensible'
+
+" Управление окружением (например, скобками или тэгами)
+"Normal mode:
+" ds   - delete a surrounding
+" cs   - change a surrounding
+" ysiw - add a surrounding
+" yS   - add a surrounding and place on a new line + indent it
+" yss  - add a surrounding to the whole line
+" ySs  - add a surrounding to the whole line, place it on a new line + indent it
+" ySS  - same as ySs
+"
+"Visual mode:
+" s - in visual mode, add a surrounding
+" S - in visual mode, add a surrounding but place text on new line + indent it
+"
+"Insert mode:
+"<CTRL-s>         - add a surrounding
+"<CTRL-s><CTRL-s> - add a new line + surrounding + indent
+"<CTRL-g>s        - same as <CTRL-s>
+"<CTRL-g>S        - same as <CTRL-s><CTRL-s>
+Plug 'tpope/vim-surround'
+
+" Автоматическое переключение раскладки клавиатуры в зависимости от edit-mode
 Plug 'lyokha/vim-xkbswitch'
+" Современная версия Powerline (строка состояния)
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Визуальная тема
 Plug 'lifepillar/vim-solarized8'
+" Файлер
 Plug 'scrooloose/nerdtree'
-    
+
 call plug#end()
 
 "-------------------------------------------------------------------------------
@@ -41,6 +69,15 @@ call plug#end()
 " Настройки плагинов
 "-------------------------------------------------------------------------------
 
+" -- vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme='simple'
+
+" -- NERDTree
+let g:NERDTreeWinSize = 25
+let NERDTreeIgnore = ['\,pyc$']
+"autocmd VimEnter * NERDTree
+
 " -- vim-xkbswitch
 let g:XkbSwitchEnabled = 1
 let g:XkbSwitchIMappings = ['ru']
@@ -50,36 +87,88 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 
-" -- vim-airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme='simple'
-
-" -- NERDTree
-let g:NERDTreeWinSize = 25
-let NERDTreeIgnore = ['\,pyc$']
-map <C-n> :NERDTreeToggle<CR>
-"autocmd VimEnter * NERDTree
-
 "-------------------------------------------------------------------------------
 " Основные настройки редактора
 "-------------------------------------------------------------------------------
 
 set ignorecase
+set smartcase
+
+set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+
+"set splitbelow
+"set splitright
+
+if has('mouse')
+	set mouse=a
+endif
+
+set confirm
+set fencs=utf-8,cp1251,latin1
+
+set spelllang=ru_ru,ru_yo,en_us
+set spell
+
+" Сохранять swapfile каждые 2 секунды бездействия
+set updatetime=2000
 
 "-------------------------------------------------------------------------------
 " Визуальные настройки редактора
 "-------------------------------------------------------------------------------
 
-set number
 set cursorline
+set number
+set showmatch
+set showtabline=2
+set synmaxcol=200
+set visualbell
 
 "-------------------------------------------------------------------------------
 " Дополнительные команды
 "-------------------------------------------------------------------------------
 
 " Позволяет записать файл под правами sudo
-cmap w!! w !sudo tee > /dev/null %
+cnoremap w!! w !sudo tee > /dev/null %
+
+"-------------------------------------------------------------------------------
+" Определения комбинаций клавиш
+"-------------------------------------------------------------------------------
+
+map <C-n> :NERDTreeToggle<CR>
+
+" Перемещаться по длиной строке как по нескольким строкам
+nnoremap j gj
+nnoremap k gk
+
+" Переключение между окнами: <Tab>+hjkl
+nnoremap <Tab> <C-W>
+
+" Следующее окно: Tab-Tab
+nnoremap <Tab><Tab> <C-W>w
+
+" Предыдущее окно: Shift-Tab
+nnoremap <S-Tab> <C-W>W
+
+" Следующая вкладка (Tab): Ctrl-Tab
+nnoremap <C-Tab> :tabnext<CR>
+
+" Предыдущая вкладка (Tab): Ctrl-Shift-Tab
+nnoremap <C-S-Tab> :tabprevious<CR>
+
+" Убрать выделение найденной подстроки
+nmap <silent> // :nohlsearch<CR>
+
+"-------------------------------------------------------------------------------
+" Удаление пробелов в конце строк
+"-------------------------------------------------------------------------------
+func! DeleteTrailingWS()
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
+endfunc
+
+autocmd BufWrite * silent call DeleteTrailingWS()
 
