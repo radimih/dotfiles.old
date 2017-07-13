@@ -18,36 +18,28 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 " Разумные настройки от авторитета
 Plug 'tpope/vim-sensible'
 
+" Поддержка команды повтора '.' для сложных команд, в том числе от плагинов
+Plug 'tpope/vim-repeat'
+
 " Управление окружением (например, скобками или тэгами)
-"Normal mode:
-" ds   - delete a surrounding
-" cs   - change a surrounding
-" ysiw - add a surrounding
-" yS   - add a surrounding and place on a new line + indent it
-" yss  - add a surrounding to the whole line
-" ySs  - add a surrounding to the whole line, place it on a new line + indent it
-" ySS  - same as ySs
-"
-"Visual mode:
-" s - in visual mode, add a surrounding
-" S - in visual mode, add a surrounding but place text on new line + indent it
-"
-"Insert mode:
-"<CTRL-s>         - add a surrounding
-"<CTRL-s><CTRL-s> - add a new line + surrounding + indent
-"<CTRL-g>s        - same as <CTRL-s>
-"<CTRL-g>S        - same as <CTRL-s><CTRL-s>
 Plug 'tpope/vim-surround'
 
 " Автоматическое переключение раскладки клавиатуры в зависимости от edit-mode
 Plug 'lyokha/vim-xkbswitch'
+
 " Современная версия Powerline (строка состояния)
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 " Визуальная тема
 Plug 'lifepillar/vim-solarized8'
+
 " Файлер
 Plug 'scrooloose/nerdtree'
+
+" Аналог CtrlP, но быстрее
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -71,7 +63,8 @@ call plug#end()
 
 " -- vim-airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='simple'
+let g:airline_theme = 'simple'
+let g:airline#extensions#tabline#enabled = 1
 
 " -- NERDTree
 let g:NERDTreeWinSize = 25
@@ -119,6 +112,7 @@ set updatetime=2000
 " Визуальные настройки редактора
 "-------------------------------------------------------------------------------
 
+set colorcolumn=100
 set cursorline
 set number
 set showmatch
@@ -137,6 +131,10 @@ cnoremap w!! w !sudo tee > /dev/null %
 " Определения комбинаций клавиш
 "-------------------------------------------------------------------------------
 
+let mapleader = ','
+let maplocalleader = ' '
+
+" Вызовы плагинов и сервисов
 map <C-n> :NERDTreeToggle<CR>
 
 " Перемещаться по длиной строке как по нескольким строкам
