@@ -10,3 +10,6 @@
 [submodule ".oh-my-zsh-custom/plugins/deer"]
 	path = .oh-my-zsh-custom/plugins/deer
 	url = git@github.com:radimih/deer.git
+[submodule ".fzf"]
+	path = .fzf
+	url = https://github.com/junegunn/fzf.git

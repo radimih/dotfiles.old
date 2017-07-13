@@ -12,7 +12,7 @@ ZSH_THEME="rkj-repos"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(zsh-syntax-highlighting zsh-autosuggestions history-substring-search \
-	 deer git colored-man-pages fancy-ctrl-z docker docker-compose)
+    deer git colored-man-pages fancy-ctrl-z docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -127,3 +127,14 @@ bindkey '^d' deer
 # Python
 
 export PYTHONSTARTUP=~/.python-startup.py
+
+# ------------------------------------------------
+# fzf (обязательно после команды bindkey -v)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# -- Использовать утилиту ag вместо find, включить
+#    в поиск скрытые файлы и игнорировать git-репы
+#export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --silent -g ""'
+#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
