@@ -133,8 +133,14 @@ export PYTHONSTARTUP=~/.python-startup.py
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Выбирать файл по Ctrl-F вместо стандартного Ctrl-T
+bindkey '^F' fzf-file-widget
+
+# Опции утилиты fzf
+export FZF_DEFAULT_OPTS='--border'
+
 # -- Использовать утилиту ag вместо find, включить
 #    в поиск скрытые файлы и игнорировать git-репы
-#export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --silent -g ""'
-#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --silent -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
