@@ -2,8 +2,8 @@
 
 [ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
 
-# ------------------------------------------------
-# oh-my-zsh
+# oh-my-zsh {{{
+# =========
 
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
@@ -16,7 +16,10 @@ plugins=(zsh-syntax-highlighting zsh-autosuggestions history-substring-search \
 
 source $ZSH/oh-my-zsh.sh
 
-# ------------------------------------------------
+#}}}
+
+# Ctrl-C/V {{{
+# ========
 # Освободить для терминала комбинации клавиш
 # Ctrl+С/V, вместо Ctrl+C сделать Ctrl+Q.
 # Не забыть в настройках терминала назначить
@@ -26,8 +29,10 @@ stty lnext undef  # освободить Ctrl+V
 stty start undef  # освободить Ctrl+Q
 stty intr ^Q      # вместо Ctrl+C сделать Ctrl+Q
 
-# ------------------------------------------------
-# Алиасы
+#}}}
+
+# Алиасы {{{
+# ======
 
 alias ll='ls -AlF --group-directories-first'
 alias la='ls -A --group-directories-first'
@@ -38,7 +43,6 @@ alias se='sudoedit'
 alias ping='ping -c4'
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-# ------------------------------------------------
 # Глобальные алиасы (замена осуществляется
 # в любом месте командной строки)
 
@@ -47,8 +51,10 @@ alias -g G='| grep'
 alias -g H='| head'
 alias -g T='| tail'
 
-# ------------------------------------------------
-# История команд
+# }}}
+
+# История команд {{{
+# ==============
 
 HISTSIZE=1000
 SAVEHIST=1000
@@ -61,8 +67,10 @@ setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
 setopt hist_ignore_space
 
-# ------------------------------------------------
-# Прочие параметры оболочки
+# }}}
+
+# Прочие параметры оболочки {{{
+# =========================
 
 setopt auto_cd
 setopt correct
@@ -71,18 +79,10 @@ setopt ignore_eof
 setopt prompt_subst
 setopt interactive_comments
 
-# ------------------------------------------------
-# Текстовый редактор по-умолчанию
+# }}}
 
-if which vim > /dev/null 2>&1
-then
-  export EDITOR=`which vim`
-else
-  export EDITOR=/usr/bin/vi
-fi
-
-# ------------------------------------------------
-# Цветной вывод команды ls
+# Цветной вывод команды ls {{{
+# ========================
 
 if [[ "$TERM" != "dumb" ]]; then
   if [[ -x $(which dircolors) ]]; then
@@ -91,14 +91,18 @@ if [[ "$TERM" != "dumb" ]]; then
   fi
 fi
 
-# ------------------------------------------------
-# Красный курсор
+# }}}
+
+# Красный курсор {{{
+# ==============
 
 echo -ne "\e]12;red\a"
 
-# ------------------------------------------------
-# vi-mode для командой строки + форма курсора
-# в зависимости от режима
+# }}}
+
+# vi-mode для командой строки {{{
+# ===========================
+# + форма курсора в зависимости от режима
 
 bindkey -v
 KEYTIMEOUT=5
@@ -117,25 +121,33 @@ function zle-keymap-select {
 zle -N zle-keymap-select
 zle-line-init() { zle-keymap-select 'beam'}
 
-# ------------------------------------------------
-# zsh-автодополнение (autosuggestions)
+# }}}
+
+# zsh-автодополнение (autosuggestions) {{{
+# ====================================
 
 # Клавиша перехода на следующее слово
 bindkey '`' forward-word
 
-# ------------------------------------------------
-# Ctrl-D: ranger-подобная навигация по файлам
-# (https://github.com/Vifon/deer)
+# }}}
+
+# Ctrl-D: ranger-подобная навигация по файлам {{{
+# ===========================================
+# https://github.com/Vifon/deer
 
 bindkey '^d' deer
 
-# ------------------------------------------------
-# Python
+# }}}
+
+# Python {{{
 
 export PYTHONSTARTUP=~/.python-startup.py
 
-# ------------------------------------------------
-# fzf (обязательно после команды bindkey -v)
+# }}}
+
+# fzf {{{
+# ===
+# Обязательно после команды bindkey -v
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -149,4 +161,6 @@ export FZF_DEFAULT_OPTS='--border'
 #    в поиск скрытые файлы и игнорировать git-репы
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --silent -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# }}}
 
