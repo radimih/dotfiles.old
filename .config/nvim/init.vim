@@ -67,9 +67,9 @@ let g:airline_theme = 'simple'
 let g:airline#extensions#tabline#enabled = 1
 
 " -- NERDTree
-let g:NERDTreeWinSize = 25
-let NERDTreeIgnore = ['\,pyc$']
-"autocmd VimEnter * NERDTree
+let g:NERDTreeWinSize = 30
+let NERDTreeIgnore = ['\,pyc$', '__pycache__$']
+" autocmd VimEnter * NERDTree
 
 " -- vim-xkbswitch
 let g:XkbSwitchEnabled = 1
@@ -95,8 +95,11 @@ set shiftwidth=4
 "set splitbelow
 "set splitright
 
+set foldmethod=marker
+set foldlevelstart=0
+
 if has('mouse')
-	set mouse=a
+	set mouse= " a
 endif
 
 set confirm
@@ -133,6 +136,13 @@ cnoremap w!! w !sudo tee > /dev/null %
 
 let mapleader = ','
 let maplocalleader = ' '
+
+" Раскрывать/закрывать вложение (fold)
+nnoremap <Space> za
+vnoremap <Space> za
+
+" Перефокусировать текущее вложение
+nnoremap <leader>z zMzvzz
 
 " Вызовы плагинов и сервисов
 map <C-n> :NERDTreeToggle<CR>
