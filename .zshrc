@@ -118,6 +118,12 @@ zle -N zle-keymap-select
 zle-line-init() { zle-keymap-select 'beam'}
 
 # ------------------------------------------------
+# zsh-автодополнение (autosuggestions)
+
+# Клавиша перехода на следующее слово
+bindkey '`' forward-word
+
+# ------------------------------------------------
 # Ctrl-D: ranger-подобная навигация по файлам
 # (https://github.com/Vifon/deer)
 
