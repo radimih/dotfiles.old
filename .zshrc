@@ -129,6 +129,9 @@ zle-line-init() { zle-keymap-select 'beam'}
 # Клавиша перехода на следующее слово
 bindkey '`' forward-word
 
+# Цвет текста для автодополнения (по-умолчанию fg=8)
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=69'
+
 # }}}
 
 # Ctrl-D: ranger-подобная навигация по файлам {{{
