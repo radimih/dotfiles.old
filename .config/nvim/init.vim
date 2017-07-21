@@ -154,7 +154,7 @@ Plug 'junegunn/fzf.vim'
 " }}}
 
 " Поддержка Python-плагинов для neovim
-Plug 'roxma/python-support.nvim' " {{{
+Plug 'roxma/python-support.nvim', { 'do': ':PythonSupportInitPython3' } " {{{
     let g:python_support_python2_require = 0
 " }}}
 
@@ -187,7 +187,9 @@ Plug 'sheerun/vim-polyglot' " {{{
 " --- JavaScript {{{
 
 " Автодополнение (требуется установленный Node.js и плагин nvim-completion-manager) {{{
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+if executable('npm')
+    Plug 'roxma/nvim-cm-tern'
+endif
 " }}}
 
 " }}} ---
