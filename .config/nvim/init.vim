@@ -153,16 +153,29 @@ Plug 'junegunn/fzf.vim'
     \ 'ctrl-x': 'vsplit' }
 " }}}
 
+" Поддержка Python-плагинов для neovim
+Plug 'roxma/python-support.nvim' " {{{
+    let g:python_support_python2_require = 0
+" }}}
+
 " }}} ---
 
 " --- Общая поддержка языков программирования {{{
 
+" Фреймворк для автодополнений
+Plug 'roxma/nvim-completion-manager'  " {{{
+    let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'mistune')
+    let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'psutil')
+    let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
+
+    " Клавиша <Tab> для выбора
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    " Клавиша <Enter> закрывает окно и начинает новую строку
+    inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" }}}
+
 " -- deoplete
-" let g:deoplete#enable_at_startup = 1
-" " use tab to forward cycle
-" inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" " use tab to backward cycle
-" inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 " " Close the documentation window when completion is done
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
@@ -172,12 +185,26 @@ Plug 'sheerun/vim-polyglot' " {{{
 " }}} --- programming language
 
 " --- JavaScript {{{
+
+" Автодополнение (требуется установленный Node.js и плагин nvim-completion-manager) {{{
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+" }}}
+
 " }}} ---
 
 " --- Markdown {{{
 
 " Поддержка вложений (folding) в Markdown-файлах
 Plug 'nelstrom/vim-markdown-folding' " {{{
+" }}}
+
+" }}} ---
+
+" --- Python {{{
+
+" Дополнительные Python-модули {{{
+let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'jedi')
+let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'flake8')
 " }}}
 
 " }}} ---
