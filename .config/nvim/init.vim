@@ -168,6 +168,8 @@ Plug 'roxma/nvim-completion-manager'  " {{{
     let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'psutil')
     let g:python_support_python3_requirements = add(get(g:,'python_support_python3_requirements',[]),'setproctitle')
 
+    set shortmess+=c
+
     " Клавиша <Tab> для выбора
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
