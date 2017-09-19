@@ -6,7 +6,7 @@
 # Скрипт независим от используемой WM или DE. Так как DE в момент своего запуска
 # перекрывает своими настройками существующие xkb-настройки, то необходимо:
 #   1) сделать так, чтобы данный скрипт запускался уже после загрузки окружения
-#   2) отключить keyboard plugin, чтобы переодически DE не сбрасывало настройки 
+#   2) отключить keyboard plugin, чтобы переодически DE не сбрасывало настройки
 #
 #-------------------------------------------------------------------------------
 
@@ -16,8 +16,7 @@
 XKB_OPTS='compose:ralt'                    # правый Alt в качестве клавиши Compose
 XKB_OPTS=${XKB_OPTS}',grp_led:caps'        # индикатор раскладки на лампочке CapsLock
 XKB_OPTS=${XKB_OPTS}',grp_led:scroll'      # индикатор раскладки на лампочке ScrollLock
-XKB_OPTS=${XKB_OPTS}',caps:escape'         # клавиша CapsLock как дополнительная клавиша ESC
-XKB_OPTS=${XKB_OPTS}',shift:both_capslock' # переключение CapsLock двумя клавишами Shift 
+XKB_OPTS=${XKB_OPTS}',caps:swapescape'     # клавиша CapsLock как дополнительная клавиша ESC
 
 # Сделать циклическое переключение раскладок по Alt-Shift.
 # Так как далее клавиши Ctrl и Alt меняются местами, то
@@ -59,18 +58,16 @@ Terminal=false
 X-GNOME-Autostart-enabled=true
 EOF
   fi
-  
+
   # Отключить клавиатурный плагин DE
   # TODO: можно сначала проверить значение параметра командой get
-  # TODO: привязка к Cinammon
   gsettings set org.gnome.settings-daemon.plugins.keyboard active false
-  gsettings set org.cinnamon.settings-daemon.plugins.keyboard active false
 
 fi
 
 #-----------------------------------------------------------
 # Загрузка параметров xkb
 
-setxkbmap -layout "us,ru(winkeys)" -option "" -option "$XKB_OPTS" -print \
+setxkbmap -layout "us,ru" -option "" -option "$XKB_OPTS" -print \
   | xkbcomp -I"$HOME/.config/xkb" - "${DISPLAY%%.*}" >/dev/null 2>&1
 

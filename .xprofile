@@ -7,11 +7,11 @@
 # (https://github.com/grafov/shift-shift):
 #   - левый Shift  - первая раскладка (us)
 #   - правый Shift - вторая раскладка (ru)
-
-SHIFT_SHIFT_NAME=shift-shift-$(uname -i)
-
-[ -x $HOME/bin/$SHIFT_SHIFT_NAME ] && \
-  ( pidof $SHIFT_SHIFT_NAME > /dev/null || $HOME/bin/$SHIFT_SHIFT_NAME -quiet > /dev/null & )
+#
+#SHIFT_SHIFT_NAME=shift-shift-$(uname -i)
+#
+#[ -x $HOME/bin/$SHIFT_SHIFT_NAME ] && \
+#  ( pidof $SHIFT_SHIFT_NAME > /dev/null || $HOME/bin/$SHIFT_SHIFT_NAME -quiet > /dev/null & )
 
 # Запустить тонкую настройку клавиатуры
 
