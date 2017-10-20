@@ -1,0 +1,87 @@
+" Основные настройки
+" ==============================================================================
+
+" Клавиша <leader>
+let mapleader = ','
+
+set history=1000
+set scrolloff=5
+
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+set surround
+
+" Определения комбинаций клавиш
+" ==============================================================================
+
+" Normal mode
+" -----------
+" Префиксы для составных команд, специфичных для IDEA:
+"
+"   [ - навигация по тексту назад
+"   ] - навигация по тексту вперед
+"   <space> - перейти к
+"   \ - запустить
+"   o - открыть диалог
+
+" В начало и в конец строки
+nnoremap H ^
+nnoremap L $
+
+" Y - скопировать до конца строки (аналогично командам C и D)
+noremap Y y$
+
+" Выделить только что вставленный текст (например, для последующего сдвига)
+" Стандартная команда gv - выделить ранее выделенный текст
+noremap gV `[v`]
+
+" Убрать подсветку найденной подстроки
+nmap <silent> // :nohlsearch<CR>
+
+" Показывать результат поиска в центре окна
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
+
+"
+nnoremap [[ :action Back<CR>
+nnoremap ]] :action Forward<CR>
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+
+" Перейти к
+nnoremap <space>d :action GotoDeclaration<CR>
+nnoremap <space>i :action GotoImplementation<cr>
+"nnoremap <space> :action GotoTypeDeclaration<CR>
+"nnoremap <space> :action GoToErrorGroup<CR>
+"nnoremap <space> :action GotoSuperMethod<CR>
+"nnoremap <space> :action GotoTest<CR>
+
+
+" Переключение между окнами (не вкладками!): <Tab>+hjkl
+nnoremap <Tab> <C-W>
+
+" Следующее окно: Tab-Tab
+nnoremap <Tab><Tab> <C-W>w
+
+" Предыдущее окно: Shift-Tab
+nnoremap <S-Tab> <C-W>W
+
+" Insert mode
+" -----------
+
+" Visual mode
+" -----------
+
+" Оставлять выделение после сдвига (indent)
+vnoremap < <gv
+vnoremap > >gv
+
