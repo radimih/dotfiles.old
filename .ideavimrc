@@ -12,6 +12,8 @@ set smartcase
 set incsearch
 set hlsearch
 
+set clipboard=unnamed
+
 set surround
 
 " Определения комбинаций клавиш
