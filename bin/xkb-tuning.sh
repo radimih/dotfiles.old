@@ -16,7 +16,6 @@
 XKB_OPTS='compose:ralt'                    # правый Alt в качестве клавиши Compose
 XKB_OPTS=${XKB_OPTS}',grp_led:caps'        # индикатор раскладки на лампочке CapsLock
 XKB_OPTS=${XKB_OPTS}',grp_led:scroll'      # индикатор раскладки на лампочке ScrollLock
-XKB_OPTS=${XKB_OPTS}',caps:swapescape'     # клавиша CapsLock как дополнительная клавиша ESC
 
 # Сделать циклическое переключение раскладок по Alt-Shift.
 # Так как далее клавиши Ctrl и Alt меняются местами, то
@@ -24,12 +23,14 @@ XKB_OPTS=${XKB_OPTS}',caps:swapescape'     # клавиша CapsLock как до
 
 XKB_OPTS=${XKB_OPTS}',grp:ctrl_shift_toggle'
 
-# Поменять местами левые Ctrl и Alt, если скрипт запускается НЕ под виртуальной машиной.
-# Под виртуальной машиной лучше поменять эти клавиши средствами хостовой ОС.
+# Если скрипт выполняется не под виртуальной машиной
 
 if ! systemd-detect-virt > /dev/null
 then
-  XKB_OPTS=${XKB_OPTS}',ctrl:swap_lalt_lctl'
+  # Под виртуальной машиной лучше определить эти клавиши средствами хостовой ОС.
+
+  XKB_OPTS=${XKB_OPTS}',ctrl:swap_lalt_lctl' # поменять местами левые Ctrl и Alt
+  XKB_OPTS=${XKB_OPTS}',caps:swapescape'     # клавиша CapsLock как дополнительная клавиша ESC
 fi
 
 #-----------------------------------------------------------
@@ -62,7 +63,7 @@ EOF
   # Отключить клавиатурный плагин DE
   # TODO: можно сначала проверить значение параметра командой get
   gsettings set org.gnome.settings-daemon.plugins.keyboard active false
-  #gsettings set org.cinnamon.settings-daemon.plugins.keyboard active false
+  gsettings set org.cinnamon.settings-daemon.plugins.keyboard active false
 
 fi
 

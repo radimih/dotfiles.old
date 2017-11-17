@@ -144,6 +144,13 @@ Plug 'scrooloose/nerdcommenter' " {{{
     let g:NERDCommentEmptyLines = 1
 " }}}
 
+" Очень быстрый поиск по файлам
+Plug 'mileszs/ack.vim' " {{{
+    if executable('ag')
+        let g:ackprg = 'ag --vimgrep'
+    endif
+" }}}
+
 " Аналог CtrlP, но быстрее
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " {{{
 Plug 'junegunn/fzf.vim'
