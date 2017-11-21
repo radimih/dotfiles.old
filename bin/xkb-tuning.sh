@@ -63,7 +63,7 @@ EOF
   # Отключить клавиатурный плагин DE
   # TODO: можно сначала проверить значение параметра командой get
   gsettings set org.gnome.settings-daemon.plugins.keyboard active false
-  gsettings set org.cinnamon.settings-daemon.plugins.keyboard active false
+  #gsettings set org.cinnamon.settings-daemon.plugins.keyboard active false
 
 fi
 
