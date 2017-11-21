@@ -97,3 +97,25 @@ nnoremap <S-Tab> <C-W>W
 vnoremap < <gv
 vnoremap > >gv
 
+" ==========================
+" ChangeSplitOrientation
+"
+"CommentByBlockComment
+"CommentByLineComment
+"
+"FileStructurePopup
+"
+"Find
+"FindNext
+"FindPrevious
+"
+"FindInPath
+"FindModal
+"
+"FindUsages
+"ShowUsages
+"
+"RenameElement
+"Refactorings.QuickListPopupAction
+"
+"SurroundWith
