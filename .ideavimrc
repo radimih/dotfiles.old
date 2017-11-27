@@ -100,10 +100,13 @@ vnoremap > >gv
 " ==========================
 " ChangeSplitOrientation
 "
+"ShowIntentionActions !!! Alt-Enter
+"
 "CommentByBlockComment
 "CommentByLineComment
 "
 "FileStructurePopup
+"GotoClass
 "
 "Find
 "FindNext
