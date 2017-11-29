@@ -22,7 +22,6 @@ set surround
 "   - копирование: выделить с помощью визуального режима и нажать Ctrl-C
 "   - вставка: Ctrl-V в нормальном, в визуальном или в insert-режиме
 
-"set clipboard=unnamed
 vnoremap <C-c> "+y
 
 
@@ -31,13 +30,6 @@ vnoremap <C-c> "+y
 
 " Normal mode
 " -----------
-" Префиксы для составных команд, специфичных для IDEA:
-"
-"   [ - навигация по тексту назад
-"   ] - навигация по тексту вперед
-"   <space> - перейти к
-"   \ - запустить
-"   o - открыть диалог
 
 " В начало и в конец строки
 nnoremap H ^
@@ -61,23 +53,6 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
-"
-nnoremap [[ :action Back<CR>
-nnoremap ]] :action Forward<CR>
-nnoremap [m :action MethodUp<cr>
-nnoremap ]m :action MethodDown<cr>
-nnoremap [c :action VcsShowPrevChangeMarker<cr>
-nnoremap ]c :action VcsShowNextChangeMarker<cr>
-
-" Перейти к
-nnoremap <space>d :action GotoDeclaration<CR>
-nnoremap <space>i :action GotoImplementation<cr>
-"nnoremap <space> :action GotoTypeDeclaration<CR>
-"nnoremap <space> :action GoToErrorGroup<CR>
-"nnoremap <space> :action GotoSuperMethod<CR>
-"nnoremap <space> :action GotoTest<CR>
-
-
 " Переключение между окнами (не вкладками!): <Tab>+hjkl
 nnoremap <Tab> <C-W>
 
@@ -97,28 +72,60 @@ nnoremap <S-Tab> <C-W>W
 vnoremap < <gv
 vnoremap > >gv
 
-" ==========================
-" ChangeSplitOrientation
+" Комбинация клавиш, специфичных для IDEA
+" ==============================================================================
+" Очень удобно в самой IDEA настроить клавиши <Ctrl+J> и <Ctrl+K> как
+" <Вниз> и <Вверх> соответственно. Тогда можно перемещаться и в диалогах.
 "
-"ShowIntentionActions !!! Alt-Enter
+" Префиксы для составных команд:
 "
+"   [ - навигация по тексту назад
+"   ] - навигация по тексту вперед
+"   <tab> - перейти к
+"   <space> -
+"   \ - запустить
+"   o - открыть диалог
+
+" Навигация по тексту
+nnoremap [[ :action Back<CR>
+nnoremap ]] :action Forward<CR>
+nnoremap [m :action MethodUp<CR>
+nnoremap ]m :action MethodDown<CR>
+nnoremap [c :action VcsShowPrevChangeMarker<CR>
+nnoremap ]c :action VcsShowNextChangeMarker<CR>
+
+" Перейти к
+nnoremap <tab>c :action GotoClass<CR>
+nnoremap <tab>d :action GotoDeclaration<CR>
+nnoremap <tab>f :action GotoFile<CR>
+nnoremap <tab>i :action GotoImplementation<CR>
+
+"nnoremap <tab> :action GotoTypeDeclaration<CR>
+"nnoremap <tab> :action GoToErrorGroup<CR>
+"nnoremap <tab> :action GotoSuperMethod<CR>
+"nnoremap <tab> :action GotoTest<CR>
+
+" Контекстное меню Alt-Enter
+nnoremap <space><space> :action ShowIntentionActions<CR>
+
+"ChangeSplitOrientation
+
 "CommentByBlockComment
 "CommentByLineComment
-"
+
 "FileStructurePopup
-"GotoClass
-"
+
 "Find
 "FindNext
 "FindPrevious
-"
+
 "FindInPath
 "FindModal
-"
+
 "FindUsages
 "ShowUsages
-"
+
 "RenameElement
 "Refactorings.QuickListPopupAction
-"
+
 "SurroundWith
