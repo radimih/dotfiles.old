@@ -31,6 +31,9 @@ vnoremap <C-c> "+y
 " Normal mode
 " -----------
 
+" <Enter> в нормальном режиме - вставить пустую строку и остаться в нормальном режиме
+nnoremap <silent> <CR> i<CR><Esc>
+
 " В начало и в конец строки
 nnoremap H ^
 nnoremap L $
