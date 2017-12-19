@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 [ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
+export EDITOR=vim
 
 # oh-my-zsh {{{
 # =========
