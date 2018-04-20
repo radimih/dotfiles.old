@@ -9,7 +9,7 @@ export EDITOR=vim
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
-ZSH_THEME="rkj-repos"
+ZSH_THEME="agnoster"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(zsh-syntax-highlighting zsh-autosuggestions history-substring-search \
