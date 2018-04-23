@@ -10,6 +10,7 @@ export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
 ZSH_THEME="agnoster"
+CASE_SENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(zsh-syntax-highlighting zsh-autosuggestions history-substring-search \
