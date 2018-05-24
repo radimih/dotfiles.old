@@ -73,3 +73,7 @@ fi
 setxkbmap -layout "us,ru" -option "" -option "$XKB_OPTS" -print \
   | xkbcomp -I"$HOME/.config/xkb" - "${DISPLAY%%.*}" >/dev/null 2>&1
 
+#-----------------------------------------------------------
+# Загрузка клавиатурных привязок (файл .xbindkeysrc)
+
+xbindkeys -p
