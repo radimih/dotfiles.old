@@ -1,4 +1,4 @@
-# For the benefit of emacs users: -*- shell-script -*-
+ For the benefit of emacs users: -*- shell-script -*-
 ###########################
 # xbindkeys configuration #
 ###########################
@@ -68,9 +68,17 @@
 ##################################
 # End of xbindkeys configuration #
 ##################################
-#    Alt_R
+
+# ---------------------------------------------
+# Немодальное переключение раскладки клавиатуры
+# ---------------------------------------------
+
+# На американскую (правый Ctrl)
+
 "xkb-switch -s us"
-    Mod2 + Multi_key
-"xkb-switch -s ru"
     Control_R
 
+# На русскую (Shift + правый Ctrl)
+
+"xkb-switch -s ru"
+    Shift + Control_R
