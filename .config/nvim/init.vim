@@ -244,6 +244,8 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 
+set hidden
+
 set ignorecase
 set smartcase
 
